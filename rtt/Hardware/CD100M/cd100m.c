@@ -279,15 +279,16 @@ uint8_t CD100M_init (uint16_t iter, cup_detect_para_t *p_paras)
 	if (status & 0x0F) {
         return status;
     }
+	/*
 	//------------------------------------------
-	/* 设置迭代次数 */
+	// 设置迭代次数 
 	g_cmd_set_iterat[2] = (uint8_t)(iter & 0x00FF);
 	g_cmd_set_iterat[3] = (uint8_t)(iter >> 8);
 	status += write_cmd_wait(g_cmd_set_iterat);
 	if (status & 0x0F) {
         return status;
     }
-	/* 设置参数1~10 */
+	// 设置参数1~10 
 	g_cmd_set_para1[2] = (uint8_t)(p_paras->paras.platform_dis & 0x00FF);
 	g_cmd_set_para1[3] = (uint8_t)(p_paras->paras.platform_dis >> 8);
 	status += write_cmd_wait(g_cmd_set_para1);
@@ -352,7 +353,7 @@ uint8_t CD100M_init (uint16_t iter, cup_detect_para_t *p_paras)
 	if (status & 0x0F) {
 		return status;
 	}
-	
+	*/
 	//-------------------------------------------
     return 0;
 }
@@ -976,7 +977,7 @@ void CD100M_uart_decode(uint8_t uart_rx,result_info_t *p_res_info,debuge_info_t 
 			//rt_kprintf("接收所在行号:%d------%d\r\n", __LINE__,uart_rx);
             if (uart_rx == 0x28) {                  /* 接收到0x28 */
                 g_uart_sta |= 0x40;                 /* 标记接收到了帧头 */
-				rt_kprintf("接收所在行号:%d------%d\r\n", __LINE__,uart_rx);
+				//rt_kprintf("接收所在行号:%d------%d\r\n", __LINE__,uart_rx);
             }
         }
     }

@@ -29,7 +29,7 @@ int main(void)
 {	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
 	usart_init(115200);  	//初始化调试串口
-	uart2_init(115200);		//初始化CD100M串口
+	uart2_init(9600);		//初始化CD100M串口
 	
 	//uart3_init(9600);		//初始化BC28串口 没有板子 
 	

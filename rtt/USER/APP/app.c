@@ -172,8 +172,8 @@ void CD100M_INFO(void *parameter)
 		uart2_send(g_cmd3,4);
 		rt_exit_critical();
 		//printf("我发送了");
-		//rt_kprintf("当前杯子状态 : %d\r\n", g_CD100M_res_info.cup_status);
-		delay_ms(3000);
+		rt_kprintf("当前杯子状态 : %d\r\n", g_CD100M_res_info.cup_status);
+		delay_ms(320);
 	}
 #endif
 }

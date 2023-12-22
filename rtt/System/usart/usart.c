@@ -155,14 +155,11 @@ void USART2_IRQHandler(void)                	//串口1中断服务程序
 	{
 		USART_ClearITPendingBit(USART2, USART_IT_RXNE); // 清空标志位
 		d = USART_ReceiveData(USART2); // 接收数据
-		//rt_kprintf("-----------%d--------\r\n",d);
-		USART_SendData(USART1,d);
+		while(RESET == USART_GetFlagStatus(USART1, USART_FLAG_TXE));
+		//USART_SendData(USART1,d);
 		// 处理接收到的数据
-		//CD100M_uart_decode(d, &g_CD100M_res_info, &g_CD100M_dbg_info, &g_CD100M_paras);	
-		if(d == 33)
-		{
-			CD100M_uart_decode(1, &g_CD100M_res_info, &g_CD100M_dbg_info, &g_CD100M_paras);	
-		}
+		CD100M_uart_decode(d, &g_CD100M_res_info, &g_CD100M_dbg_info, &g_CD100M_paras);	
+		
 	}
 }
 
